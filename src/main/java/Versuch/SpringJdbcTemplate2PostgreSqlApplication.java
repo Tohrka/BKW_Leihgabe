@@ -20,12 +20,12 @@ public class SpringJdbcTemplate2PostgreSqlApplication {
         //create a new JdbcTemplate
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         //set the data source properties
-        
-        jdbcTemplate.setDataSource(new org.postgresql.ds.PGSimpleDataSource());
-        jdbcTemplate.getDataSource().setUrl(url);
-        jdbcTemplate.getDataSource().setUser(username);
-        jdbcTemplate.getDataSource().setPassword(password);
-        Datasource d = new JdbcTemplate();
+
+        org.postgresql.ds.PGSimpleDataSource d = new org.postgresql.ds.PGSimpleDataSource();
+        d.setUrl(url);
+        d.setUser(username);
+        d.setPassword(password);
+        jdbcTemplate.setDataSource(d);
 
         //create a new table
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS " +
