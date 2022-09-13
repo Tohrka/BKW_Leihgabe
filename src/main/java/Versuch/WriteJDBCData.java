@@ -1,15 +1,9 @@
 package Versuch;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.sql.DataSource;
 
-
-public class SpringJdbcTemplate2PostgreSqlApplication {
+public class WriteJDBCData {
     public static void main(String[] args) {
         //cockroachdb connection
         String url = "jdbc:postgresql://free-tier13.aws-eu-central-1.cockroachlabs.cloud:26257/defaultd?sslmode=disable";
