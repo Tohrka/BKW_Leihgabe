@@ -12,9 +12,10 @@ public class WriteJDBCData {
         //create a new JdbcTemplate
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         //set the data source properties
+        String path = "jdbc:postgresql://free-tier13.aws-eu-central-1.cockroachlabs.cloud:26257/defaultdb?options=--cluster%3Dbkw-devices-3271&sslmode=verify-full&sslrootcert="+System.getProperty("user.dir")+"\\src\\main\\resources\\root.crt";
 
         org.postgresql.ds.PGSimpleDataSource ds = new org.postgresql.ds.PGSimpleDataSource();
-        ds.setUrl("jdbc:postgresql://free-tier13.aws-eu-central-1.cockroachlabs.cloud:26257/defaultdb?options=--cluster%3Dbkw-devices-3271&sslmode=verify-full&sslrootcert=C:\\Users\\M-Kub\\AppData\\Roaming\\postgresql\\root.crt");
+        ds.setUrl(path);
         ds.setUser("tohrka");
         ds.setPassword("0qGV21S4DcrX-cs717Ooww");
 
