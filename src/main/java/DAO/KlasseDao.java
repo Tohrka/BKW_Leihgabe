@@ -19,7 +19,7 @@ public class KlasseDao {
     //read all Klasse from the table
     public ArrayList<Klasse> readAllKlasse() {
         ArrayList<Klasse> list = new ArrayList<Klasse>();
-        con.getJdbcTemplate().query("SELECT * FROM Lehrer", (rs, rowNum) ->
+        con.getJdbcTemplate().query("SELECT * FROM Klasse", (rs, rowNum) ->
                 new Klasse(rs.getInt("KlasseID"),
                         rs.getString("Klassenname"),
                         rs.getInt("LehrerID"))
@@ -28,7 +28,7 @@ public class KlasseDao {
     }
     //read a specific Klasse with KlasseID from the table
     public Klasse readKlasseWithKlasseID(int klasseID) {
-        Klasse k = con.getJdbcTemplate().queryForObject("SELECT * FROM Lehrer WHERE LehrerID = ?", new Object[]{klasseID}, (rs, rowNum) ->
+        Klasse k = con.getJdbcTemplate().queryForObject("SELECT * FROM Klasse WHERE KlasseID = ?", new Object[]{klasseID}, (rs, rowNum) ->
                 new Klasse(rs.getInt("KlasseID"),
                         rs.getString("Klassenname"),
                         rs.getInt("LehrerID"))
