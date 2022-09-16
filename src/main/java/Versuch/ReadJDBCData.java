@@ -1,6 +1,8 @@
 package Versuch;
 
+import DAO.KlasseDao;
 import Model.Gereat;
+import Model.Klasse;
 import e2e.E2eConnection;
 
 public class ReadJDBCData {
@@ -20,7 +22,5 @@ public class ReadJDBCData {
                             rs.getString("Schaeden"),
                             rs.getInt("Baujahr"))
             ).forEach(System.out::println);
-
+            }
         }
-
-}
