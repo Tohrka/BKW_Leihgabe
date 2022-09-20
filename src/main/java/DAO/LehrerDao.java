@@ -56,5 +56,10 @@ public class LehrerDao {
         );
         return l;
     }
+    //update a Lehrer
+    public void updateLehrer(Lehrer l) {
+        con.getJdbcTemplate().update("UPDATE Lehrer SET Vorname = ?, Nachname = ?, Email = ?, Telefonnummer = ?, Admin = ?, Adresse = ? WHERE LehrerID = ?",
+                l.getVorname(), l.getNachname(), l.getEmail(), l.getTelefonnummer(), l.isAdmin(), l.getAdresse(), l.getLehrer_id());
+    }
 }
 

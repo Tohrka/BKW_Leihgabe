@@ -24,8 +24,6 @@ public class ReadJDBCData {
             //read a specific gereat with baujahr from the table
             System.out.println("Gereate mit Baujahr 2014 aus der Tabelle:");
             dao.readGereatWithBaujahr(2014).forEach((Gereat g) -> System.out.println(g));
-
-
         }
 
 }
