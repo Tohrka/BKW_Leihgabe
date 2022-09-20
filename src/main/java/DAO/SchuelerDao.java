@@ -28,12 +28,12 @@ public class SchuelerDao {
                         rs.getString("Adresse"),
                         rs.getString("EMail"),
                         rs.getString("telefonnummer"))
-        ).forEach((Schueler l) -> list.add(l));
+        ).forEach((Schueler s) -> list.add(s));
         return list;
     }
     //read a specific Schueler with SchuelerID from the table
     public Schueler readSchuelerWithSchuelerID(int schuelerID) {
-        Schueler l = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE SchuelerID = ?", new Object[]{schuelerID}, (rs, rowNum) ->
+        Schueler s = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE SchuelerID = ?", new Object[]{schuelerID}, (rs, rowNum) ->
                 new Schueler(rs.getInt("Schueler_ID"),
                         rs.getString("Vorname"),
                         rs.getString("Nachname"),
@@ -43,11 +43,11 @@ public class SchuelerDao {
                         rs.getString("EMail"),
                         rs.getString("telefonnummer"))
         );
-        return l;
+        return s;
     }
     //read a specific Schueler with vorname and nachname from the table
     public Schueler readSchuelerWithVornameNachname(String vorname, String nachname) {
-        Schueler l = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE Vorname = ? AND Nachname = ?", new Object[]{vorname, nachname}, (rs, rowNum) ->
+        Schueler s = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE Vorname = ? AND Nachname = ?", new Object[]{vorname, nachname}, (rs, rowNum) ->
                 new Schueler(rs.getInt("Schueler_ID"),
                         rs.getString("Vorname"),
                         rs.getString("Nachname"),
@@ -57,6 +57,6 @@ public class SchuelerDao {
                         rs.getString("EMail"),
                         rs.getString("telefonnummer"))
         );
-        return l;
+        return s;
     }
 }
