@@ -26,6 +26,16 @@ public class ReadJDBCData {
             dao.readGereatWithBaujahr(2014).forEach((Gereat g) -> System.out.println(g));
 
 
+            //read all geareate from the table
+
+            con.getJdbcTemplate().query("SELECT * FROM Geraete", (rs, rowNum) ->
+                    new Gereat(rs.getInt("Seriennummer"),
+                            rs.getString("Marke"),
+                            rs.getString("Modell"),
+                            rs.getString("Schaeden"),
+                            rs.getInt("Baujahr"))
+            ).forEach(System.out::println);
+
         }
 
 }
