@@ -12,5 +12,4 @@ public class Lehrer {
     String email;
     String telefonnummer;
     boolean admin;
-    String adresse;
 }

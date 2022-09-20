@@ -1,6 +1,7 @@
 package DAO;
 import Model.Gereat;
 import e2e.E2eConnection;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.ArrayList;
 
@@ -25,14 +26,18 @@ public class GereatDao {
     }
     //read a specific geareat with seriennummer from the table
     public Gereat readGereatWithSeriennummer(int seriennummer) {
-        Gereat g = con.getJdbcTemplate().queryForObject("SELECT * FROM Geraete WHERE Seriennummer = ?", new Object[]{seriennummer}, (rs, rowNum) ->
-                new Gereat(rs.getInt("Seriennummer"),
-                        rs.getString("Marke"),
-                        rs.getString("Modell"),
-                        rs.getString("Schaeden"),
-                        rs.getInt("Baujahr"))
-        );
-        return g;
+        try{
+            Gereat g = con.getJdbcTemplate().queryForObject("SELECT * FROM Geraete WHERE Seriennummer = ?", new Object[]{seriennummer}, (rs, rowNum) ->
+                    new Gereat(rs.getInt("Seriennummer"),
+                            rs.getString("Marke"),
+                            rs.getString("Modell"),
+                            rs.getString("Schaeden"),
+                            rs.getInt("Baujahr"))
+            );
+            return g;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
     //read a specific gereat with marke from the table
     public ArrayList<Gereat> readGereatWithMarke(String marke) {

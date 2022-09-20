@@ -2,6 +2,7 @@ package DAO;
 
 import Model.Klasse;
 import e2e.E2eConnection;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.ArrayList;
 
@@ -28,21 +29,34 @@ public class KlasseDao {
     }
     //read a specific Klasse with KlasseID from the table
     public Klasse readKlasseWithKlasseID(int klassenID) {
-        Klasse k = con.getJdbcTemplate().queryForObject("SELECT * FROM Klasse WHERE KlassenID = ?", new Object[]{klassenID}, (rs, rowNum) ->
-                new Klasse(rs.getInt("Klassen_ID"),
-                        rs.getString("Klassenname"),
-                        rs.getInt("Lehrer_ID"))
-        );
-        return k;
+        try {
+            Klasse k = con.getJdbcTemplate().queryForObject("SELECT * FROM Klasse WHERE klassen_id = ?", new Object[]{klassenID}, (rs, rowNum) ->
+                    new Klasse(rs.getInt("Klassen_ID"),
+                            rs.getString("Klassenname"),
+                            rs.getInt("Lehrer_ID"))
+            );
+            return k;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
     //read a specific klasse with Klassenname from the table
     public Klasse readKlasseWithVornameNachname(String klassenname) {
-        Klasse k = con.getJdbcTemplate().queryForObject("SELECT * FROM Klasse WHERE Klassename = ?", new Object[]{klassenname}, (rs, rowNum) ->
-                new Klasse(rs.getInt("Klassen_ID"),
-                        rs.getString("Klassenname"),
-                        rs.getInt("Lehrer_ID"))
-        );
-        return k;
+        try {
+            Klasse k = con.getJdbcTemplate().queryForObject("SELECT * FROM Klasse WHERE Klassenname = ?", new Object[]{klassenname}, (rs, rowNum) ->
+                    new Klasse(rs.getInt("Klassen_ID"),
+                            rs.getString("Klassenname"),
+                            rs.getInt("Lehrer_ID"))
+            );
+            return k;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    //insert a new Klasse into the table
+    public void insertKlasse(Klasse k) {
+        con.getJdbcTemplate().update("INSERT INTO Klasse (Klassenname, Lehrer_ID) VALUES (?, ?)", k.getKlassenname(), k.getLehrer_id());
     }
     //update a Klasse
     public void updateKlasse(Klasse k) {

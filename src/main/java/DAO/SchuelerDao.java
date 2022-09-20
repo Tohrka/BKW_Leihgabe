@@ -2,6 +2,7 @@ package DAO;
 
 import Model.Schueler;
 import e2e.E2eConnection;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,6 @@ public class SchuelerDao {
                         rs.getString("Nachname"),
                         rs.getInt("Klassen_ID"),
                         rs.getDate("Geburtsdatum"),
-                        rs.getString("Adresse"),
                         rs.getString("EMail"),
                         rs.getString("telefonnummer"))
         ).forEach((Schueler s) -> list.add(s));
@@ -33,35 +33,46 @@ public class SchuelerDao {
     }
     //read a specific Schueler with SchuelerID from the table
     public Schueler readSchuelerWithSchuelerID(int schuelerID) {
-        Schueler s = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE SchuelerID = ?", new Object[]{schuelerID}, (rs, rowNum) ->
-                new Schueler(rs.getInt("Schueler_ID"),
-                        rs.getString("Vorname"),
-                        rs.getString("Nachname"),
-                        rs.getInt("Klassen_ID"),
-                        rs.getDate("Geburtsdatum"),
-                        rs.getString("Adresse"),
-                        rs.getString("EMail"),
-                        rs.getString("telefonnummer"))
-        );
-        return s;
+        try {
+            Schueler s = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE schueler_id = ?", new Object[]{schuelerID}, (rs, rowNum) ->
+                    new Schueler(rs.getInt("Schueler_ID"),
+                            rs.getString("Vorname"),
+                            rs.getString("Nachname"),
+                            rs.getInt("Klassen_ID"),
+                            rs.getDate("Geburtsdatum"),
+                            rs.getString("EMail"),
+                            rs.getString("telefonnummer"))
+            );
+            return s;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
-    //read a specific Schueler with vorname and nachname from the table
+    // read a specific Schueler with vorname and nachname from the table test for null
     public Schueler readSchuelerWithVornameNachname(String vorname, String nachname) {
-        Schueler s = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE Vorname = ? AND Nachname = ?", new Object[]{vorname, nachname}, (rs, rowNum) ->
-                new Schueler(rs.getInt("Schueler_ID"),
-                        rs.getString("Vorname"),
-                        rs.getString("Nachname"),
-                        rs.getInt("Klassen_ID"),
-                        rs.getDate("Geburtsdatum"),
-                        rs.getString("Adresse"),
-                        rs.getString("EMail"),
-                        rs.getString("telefonnummer"))
-        );
-        return s;
+        try {
+            Schueler s = con.getJdbcTemplate().queryForObject("SELECT * FROM Schueler WHERE Vorname = ? AND Nachname = ?", new Object[]{vorname, nachname}, (rs, rowNum) ->
+                    new Schueler(rs.getInt("Schueler_ID"),
+                            rs.getString("Vorname"),
+                            rs.getString("Nachname"),
+                            rs.getInt("Klassen_ID"),
+                            rs.getDate("Geburtsdatum"),
+                            rs.getString("EMail"),
+                            rs.getString("telefonnummer"))
+            );
+            return s;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+    //insert a new Schueler into the table
+    public void insertSchueler(Schueler s) {
+        con.getJdbcTemplate().update("INSERT INTO Schueler (Vorname, Nachname, Klassen_ID, Geburtsdatum, EMail, telefonnummer) VALUES (?, ?, ?, ?, ?, ?)",
+                s.getVorname(), s.getNachname(), s.getKlassen_id(), s.getGeburtsdatum(), s.getEmail(), s.getTelefonnummer());
     }
     //update a Schueler
 public void updateSchueler(Schueler l) {
-        con.getJdbcTemplate().update("UPDATE Schueler SET Vorname = ?, Nachname = ?, Klassen_ID = ?, Geburtsdatum = ?, Adresse = ?, EMail = ?, Telefonnummer = ? WHERE Schueler_ID = ?",
-                l.getVorname(), l.getNachname(), l.getKlassen_id(), l.getGeburtsdatum(), l.getAdresse(), l.getEmail(), l.getTelefonnummer(), l.getSchueler_id());
+        con.getJdbcTemplate().update("UPDATE Schueler SET Vorname = ?, Nachname = ?, Klassen_ID = ?, Geburtsdatum = ?, EMail = ?, Telefonnummer = ? WHERE Schueler_ID = ?",
+                l.getVorname(), l.getNachname(), l.getKlassen_id(), l.getGeburtsdatum(), l.getEmail(), l.getTelefonnummer(), l.getSchueler_id());
     }
 }

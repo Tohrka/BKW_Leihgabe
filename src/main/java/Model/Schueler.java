@@ -13,7 +13,6 @@ public class Schueler {
     String nachname;
     int klassen_id;
     Date geburtsdatum;
-    String adresse;
     String email;
     String telefonnummer;
 }
