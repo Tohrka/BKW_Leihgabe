@@ -19,21 +19,27 @@ public class WriteJDBCData {
                 " Ausgabe_ab DATE, Ausgabe_bis DATE," +
                 " PRIMARY KEY (Schueler_ID, Seriennummer));" +
 
+                "DRRP TABLE IF EXISTS Schueler;" +
                 "CREATE TABLE IF NOT EXISTS " +
                 "Schueler (Schueler_ID INT PRIMARY KEY, Nachname STRING," +
                 "Vorname String, Klassen_ID INT," +
                 "Geburtsdatum DATE, Adresse STRING," +
-                "Email STRING, Telefonnummer STRING);" +
+                "Email STRING, Telefonnummer STRING," +
+                "Strasse STRING, Hausnummer STRING, PLZ INT," +
+                "Ort STRING);" +
 
                 "CREATE TABLE IF NOT EXISTS Klasse" +
                 "(Klassen_ID INT PRIMARY KEY, Klassenname STRING," +
                 "Lehrer_ID INT);" +
 
+                "DROP TABLE IF EXISTS Lehrer;" +
                 "CREATE TABLE IF NOT EXISTS Lehrer" +
                 "(Lehrer_ID INT PRIMARY KEY, Nachname STRING," +
                 "Vorname STRING, Email STRING," +
                 "Telefonnummer STRING,Admin BOOLEAN," +
-                "Adresse STRING);" +
+                "Strasse STRING, Hausnummer STRING, PLZ INT," +
+                "Ort STRING);" +
+
 
                 "CREATE TABLE IF NOT EXISTS Login" +
                 "(Lehrer_ID INT PRIMARY KEY,Nutzername STRING," +
