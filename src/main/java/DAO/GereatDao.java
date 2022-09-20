@@ -74,4 +74,8 @@ public class GereatDao {
     public void insertGereat(Gereat g) {
         con.getJdbcTemplate().update("INSERT INTO Geraete (Seriennummer, Marke, Modell, Schaeden, Baujahr) VALUES (?, ?, ?, ?, ?)", g.getSeriennummer(), g.getMarke(), g.getModell(), g.getSchaeden(), g.getBaujahr());
     }
+       //update a gereat in the table
+    public void updateGereat(Gereat g) {
+        con.getJdbcTemplate().update("UPDATE Geraete SET Marke = ?, Modell = ?, Schaeden = ?, Baujahr = ? WHERE Seriennummer = ?", g.getMarke(), g.getModell(), g.getSchaeden(), g.getBaujahr(), g.getSeriennummer());
+    }
 }
