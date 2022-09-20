@@ -73,4 +73,3 @@ public class LehrerDao {
                 l.getVorname(), l.getNachname(), l.getEmail(), l.getTelefonnummer(), l.isAdmin(), l.getLehrer_id());
     }
 }
-
