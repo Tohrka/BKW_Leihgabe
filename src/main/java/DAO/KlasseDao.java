@@ -44,5 +44,10 @@ public class KlasseDao {
         );
         return k;
     }
+    //update a Klasse
+    public void updateKlasse(Klasse k) {
+        con.getJdbcTemplate().update("UPDATE Klasse SET Klassenname = ?, Lehrer_ID = ? WHERE Klassen_ID = ?",
+                k.getKlassenname(), k.getLehrer_id(), k.getKlassen_id());
+    }
 }
 

@@ -59,4 +59,9 @@ public class SchuelerDao {
         );
         return s;
     }
+    //update a Schueler
+public void updateSchueler(Schueler l) {
+        con.getJdbcTemplate().update("UPDATE Schueler SET Vorname = ?, Nachname = ?, Klassen_ID = ?, Geburtsdatum = ?, Adresse = ?, EMail = ?, Telefonnummer = ? WHERE Schueler_ID = ?",
+                l.getVorname(), l.getNachname(), l.getKlassen_id(), l.getGeburtsdatum(), l.getAdresse(), l.getEmail(), l.getTelefonnummer(), l.getSchueler_id());
+    }
 }
