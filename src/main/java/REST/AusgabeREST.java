@@ -20,11 +20,11 @@ public class AusgabeREST {
 
     @GetMapping("/ausgabe/schueler/{schuelerID}")
     public ArrayList<Ausgabe> getAusgabeWithSchuelerID(@PathVariable int schuelerID) {
-        return aDao.readAusgabeWithSchuelerID(schuelerID);
+        return aDao.readAllAusgabeWithSchuelerID(schuelerID);
     }
     @GetMapping("/ausgabe/seriennummer/{seriennummer}")
     public ArrayList<Ausgabe> getAusgabeWithSeriennummer(@PathVariable int seriennummer) {
-        return aDao.readAusgabeWithSeriennummer(seriennummer);
+        return aDao.readAllAusgabeWithSeriennummer(seriennummer);
     }
     @PostMapping("/ausgabe")
     public void createAusgabe(@RequestBody Ausgabe a) {
