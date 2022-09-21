@@ -1,0 +1,38 @@
+package REST;
+import DAO.SchuelerDao;
+import Model.Schueler;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+
+@RestController
+public class SchuelerREST {
+    private SchuelerDao sDao = SchuelerDao.getInstance();
+
+    @GetMapping("/schueler")
+    public ArrayList<Schueler> getAllSchueler() {
+        return sDao.readAllSchueler();
+    }
+
+    @GetMapping("/schueler/{schuelerID}")
+    public Schueler getSchuelerWithSchuelerID(@PathVariable int schuelerID) {
+        return sDao.readSchuelerWithSchuelerID(schuelerID);
+    }
+
+    @GetMapping("/schueler/name/{vorname}/{nachname}")
+    public Schueler getSchuelerWithVornameNachname(@PathVariable String vorname, @PathVariable String nachname) {
+        return sDao.readSchuelerWithVornameNachname(vorname, nachname);
+    }
+    @GetMapping("/schueler/klasse/{klassen_id}")
+    public ArrayList<Schueler> getSchuelerWithKlassenID(@PathVariable int klassen_id) {
+        return sDao.readAllSchuelerWithKlassenID(klassen_id);
+    }
+    @PostMapping("/schueler")
+    public void createSchueler(@RequestBody Schueler s) {
+        sDao.insertSchueler(s);
+    }
+    @PostMapping("/schueler/update")
+    public void updateSchueler(@RequestBody Schueler s) {
+        sDao.updateSchueler(s);
+    }
+
+}

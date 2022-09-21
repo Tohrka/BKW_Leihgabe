@@ -65,6 +65,20 @@ public class SchuelerDao {
             return null;
         }
     }
+    //read all Schueler with KlassenID from the table
+    public ArrayList<Schueler> readAllSchuelerWithKlassenID(int klassenID) {
+        ArrayList<Schueler> list = new ArrayList<Schueler>();
+        con.getJdbcTemplate().query("SELECT * FROM Schueler WHERE Klassen_ID = ?", new Object[]{klassenID}, (rs, rowNum) ->
+                new Schueler(rs.getInt("Schueler_ID"),
+                        rs.getString("Vorname"),
+                        rs.getString("Nachname"),
+                        rs.getInt("Klassen_ID"),
+                        rs.getDate("Geburtsdatum"),
+                        rs.getString("EMail"),
+                        rs.getString("telefonnummer"))
+        ).forEach((Schueler s) -> list.add(s));
+        return list;
+    }
     //insert a new Schueler into the table
     public void insertSchueler(Schueler s) {
         con.getJdbcTemplate().update("INSERT INTO Schueler (Vorname, Nachname, Klassen_ID, Geburtsdatum, EMail, telefonnummer) VALUES (?, ?, ?, ?, ?, ?)",

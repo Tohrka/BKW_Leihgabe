@@ -1,0 +1,38 @@
+package REST;
+import DAO.AusgabeDao;
+import Model.Ausgabe;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+
+@RestController
+public class AusgabeREST {
+    private AusgabeDao aDao = AusgabeDao.getInstance();
+
+    @GetMapping("/ausgabe")
+    public ArrayList<Ausgabe> getAllAusgabe() {
+        return aDao.readAllAusgabe();
+    }
+
+    @GetMapping("/ausgabe/{schuelerID}/{seriennummer}")
+    public Ausgabe getAusgabeWithSchuelerIDSeriennummer(@PathVariable int schuelerID, @PathVariable int seriennummer) {
+        return aDao.readAusgabeWithSchuelerIDSeriennummer(schuelerID, seriennummer);
+    }
+
+    @GetMapping("/ausgabe/schueler/{schuelerID}")
+    public ArrayList<Ausgabe> getAusgabeWithSchuelerID(@PathVariable int schuelerID) {
+        return aDao.readAusgabeWithSchuelerID(schuelerID);
+    }
+    @GetMapping("/ausgabe/seriennummer/{seriennummer}")
+    public ArrayList<Ausgabe> getAusgabeWithSeriennummer(@PathVariable int seriennummer) {
+        return aDao.readAusgabeWithSeriennummer(seriennummer);
+    }
+    @PostMapping("/ausgabe")
+    public void createAusgabe(@RequestBody Ausgabe a) {
+        aDao.insertAusgabe(a);
+    }
+    @PostMapping("/ausgabe/update")
+    public void updateAusgabe(@RequestBody Ausgabe a) {
+        aDao.updateAusgabe(a);
+    }
+
+}

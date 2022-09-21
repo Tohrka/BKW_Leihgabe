@@ -41,7 +41,7 @@ public class KlasseDao {
         }
     }
     //read a specific klasse with Klassenname from the table
-    public Klasse readKlasseWithVornameNachname(String klassenname) {
+    public Klasse readKlasseWithBezeichnung(String klassenname) {
         try {
             Klasse k = con.getJdbcTemplate().queryForObject("SELECT * FROM Klasse WHERE Klassenname = ?", new Object[]{klassenname}, (rs, rowNum) ->
                     new Klasse(rs.getInt("Klassen_ID"),

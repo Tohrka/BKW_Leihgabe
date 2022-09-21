@@ -2,7 +2,6 @@ package REST;
 import DAO.LehrerDao;
 import Model.Lehrer;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 
 @RestController
@@ -19,7 +18,7 @@ public class LehrerREST {
         return lDao.readLehrerWithLehrerID(lehrerID);
     }
 
-    @GetMapping("/lehrer/{vorname}/{nachname}")
+    @GetMapping("/lehrer/name/{vorname}/{nachname}")
     public Lehrer getLehrerWithVornameNachname(@PathVariable String vorname, @PathVariable String nachname) {
         return lDao.readLehrerWithVornameNachname(vorname, nachname);
     }

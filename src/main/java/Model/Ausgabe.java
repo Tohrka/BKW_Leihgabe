@@ -12,5 +12,5 @@ public class Ausgabe {
     int schueler_id;
     int seriennummer;
     Date ausgabe_bis;
-    Date ausgabe_von;
+    Date ausgabe_ab;
 }
