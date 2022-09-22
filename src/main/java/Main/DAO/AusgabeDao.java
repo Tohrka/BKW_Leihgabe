@@ -1,7 +1,7 @@
-package DAO;
+package Main.DAO;
 
-import Model.Ausgabe;
-import e2e.E2eConnection;
+import Main.Model.Ausgabe;
+import Main.e2e.E2eConnection;
 
 import java.util.ArrayList;
 

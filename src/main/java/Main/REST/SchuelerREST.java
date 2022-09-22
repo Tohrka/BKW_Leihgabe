@@ -1,6 +1,6 @@
-package REST;
-import DAO.SchuelerDao;
-import Model.Schueler;
+package Main.REST;
+import Main.DAO.SchuelerDao;
+import Main.Model.Schueler;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 

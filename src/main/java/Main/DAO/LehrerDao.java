@@ -1,9 +1,7 @@
-package DAO;
+package Main.DAO;
 
-import Model.Lehrer;
-import e2e.E2eConnection;
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.EmptyResultDataAccessException;
+import Main.Model.Lehrer;
+import Main.e2e.E2eConnection;
 
 import java.util.ArrayList;
 

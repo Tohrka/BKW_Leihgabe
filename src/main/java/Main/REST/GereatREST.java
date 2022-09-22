@@ -1,6 +1,6 @@
-package REST;
-import DAO.GereatDao;
-import Model.Gereat;
+package Main.REST;
+import Main.DAO.GereatDao;
+import Main.Model.Gereat;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 

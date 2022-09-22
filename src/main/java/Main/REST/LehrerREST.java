@@ -1,6 +1,6 @@
-package REST;
-import DAO.LehrerDao;
-import Model.Lehrer;
+package Main.REST;
+import Main.DAO.LehrerDao;
+import Main.Model.Lehrer;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 

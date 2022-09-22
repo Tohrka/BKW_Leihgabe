@@ -1,9 +1,8 @@
 
-package REST;
-import DAO.LoginDao;
-import Model.Login;
+package Main.REST;
+import Main.DAO.LoginDao;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+
 @RestController
 public class LoginREST {
     private LoginDao lDao = LoginDao.getInstance();

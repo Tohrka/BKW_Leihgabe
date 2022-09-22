@@ -1,4 +1,4 @@
-package e2e;
+package Main.e2e;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 

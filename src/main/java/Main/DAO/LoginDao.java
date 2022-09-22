@@ -1,6 +1,6 @@
-package DAO;
+package Main.DAO;
 
-import e2e.E2eConnection;
+import Main.e2e.E2eConnection;
 
 public class LoginDao {
     //logger

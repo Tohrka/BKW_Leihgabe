@@ -1,6 +1,6 @@
-package REST;
-import DAO.AusgabeDao;
-import Model.Ausgabe;
+package Main.REST;
+import Main.DAO.AusgabeDao;
+import Main.Model.Ausgabe;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
