@@ -5,6 +5,7 @@ import Main.Model.GereateStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
+@RestController
 public class GereatREST {
     private GereatDao gDao = GereatDao.getInstance();
 

@@ -4,6 +4,7 @@ import Main.Model.Klasse;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
+@RestController
 public class KlasseREST {
     private KlasseDao kDao = KlasseDao.getInstance();
 
