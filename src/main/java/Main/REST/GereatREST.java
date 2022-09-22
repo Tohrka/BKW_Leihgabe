@@ -1,6 +1,7 @@
 package Main.REST;
 import Main.DAO.GereatDao;
 import Main.Model.Gereat;
+import Main.Model.GereateStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
@@ -28,6 +29,10 @@ public class GereatREST {
     @GetMapping("/gereat/baujahr/{baujahr}")
     public ArrayList<Gereat> getGereatWithBaujahr(@PathVariable int baujahr) {
         return gDao.readGereatWithBaujahr(baujahr);
+    }
+    @GetMapping("/gereat/status/{status}")
+    public ArrayList<Gereat> getGereatWithStatus(@PathVariable String status) {
+        return gDao.readGereatWithStatus(GereateStatus.getStatus(status));
     }
     @PostMapping("/gereat")
     public void createGereat(@RequestBody Gereat g) {

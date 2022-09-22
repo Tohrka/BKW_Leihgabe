@@ -1,6 +1,7 @@
 package Main.DAO;
 
 import Main.Model.Gereat;
+import Main.Model.GereateStatus;
 import Main.e2e.E2eConnection;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class GereatDao {
                             rs.getString("Marke"),
                             rs.getString("Modell"),
                             rs.getString("Schaeden"),
-                            rs.getInt("Baujahr"))
+                            rs.getInt("Baujahr"),
+                            GereateStatus.getStatus(rs.getString("Status")))
             ).forEach((Gereat g) -> list.add(g));
             return list;
         } catch (Exception e) {
@@ -44,7 +46,8 @@ public class GereatDao {
                             rs.getString("Marke"),
                             rs.getString("Modell"),
                             rs.getString("Schaeden"),
-                            rs.getInt("Baujahr"))
+                            rs.getInt("Baujahr"),
+                            GereateStatus.getStatus(rs.getString("Status")))
             );
             return g;
         } catch (Exception e) {
@@ -62,7 +65,8 @@ public class GereatDao {
                             rs.getString("Marke"),
                             rs.getString("Modell"),
                             rs.getString("Schaeden"),
-                            rs.getInt("Baujahr"))
+                            rs.getInt("Baujahr"),
+                            GereateStatus.getStatus(rs.getString("Status")))
             ).forEach((Gereat g) -> list.add(g));
             return list;
         } catch (Exception e) {
@@ -80,7 +84,8 @@ public class GereatDao {
                             rs.getString("Marke"),
                             rs.getString("Modell"),
                             rs.getString("Schaeden"),
-                            rs.getInt("Baujahr"))
+                            rs.getInt("Baujahr"),
+                            GereateStatus.getStatus(rs.getString("Status")))
             ).forEach((Gereat g) -> list.add(g));
             return list;
         } catch (Exception e) {
@@ -89,7 +94,7 @@ public class GereatDao {
         }
     }
 
-    //read a specific gereat with baujahr from the table
+    //read all specific gereat with baujahr from the table
     public ArrayList<Gereat> readGereatWithBaujahr(int baujahr) {
         ArrayList<Gereat> list = new ArrayList<Gereat>();
         try {
@@ -98,7 +103,8 @@ public class GereatDao {
                             rs.getString("Marke"),
                             rs.getString("Modell"),
                             rs.getString("Schaeden"),
-                            rs.getInt("Baujahr"))
+                            rs.getInt("Baujahr"),
+                            GereateStatus.getStatus(rs.getString("Status")))
             ).forEach((Gereat g) -> list.add(g));
             return list;
         } catch (Exception e) {
@@ -107,10 +113,28 @@ public class GereatDao {
         }
     }
 
+    //read all specific gereat with status from the table
+    public ArrayList<Gereat> readGereatWithStatus(GereateStatus status) {
+        ArrayList<Gereat> list = new ArrayList<Gereat>();
+        try {
+            con.getJdbcTemplate().query("SELECT * FROM Geraete WHERE Status = ?", new Object[]{status.name()}, (rs, rowNum) ->
+                    new Gereat(rs.getInt("Seriennummer"),
+                            rs.getString("Marke"),
+                            rs.getString("Modell"),
+                            rs.getString("Schaeden"),
+                            rs.getInt("Baujahr"),
+                            GereateStatus.getStatus(rs.getString("Status")))
+            ).forEach((Gereat g) -> list.add(g));
+            return list;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
+        }
+    }
     //insert a new gereat into the table
     public void insertGereat(Gereat g) {
         try {
-            con.getJdbcTemplate().update("INSERT INTO Geraete (Seriennummer, Marke, Modell, Schaeden, Baujahr) VALUES (?, ?, ?, ?, ?)", g.getSeriennummer(), g.getMarke(), g.getModell(), g.getSchaeden(), g.getBaujahr());
+            con.getJdbcTemplate().update("INSERT INTO Geraete (Seriennummer, Marke, Modell, Schaeden, Baujahr, Status) VALUES (?, ?, ?, ?, ?, ?)", g.getSeriennummer(), g.getMarke(), g.getModell(), g.getSchaeden(), g.getBaujahr(), g.getStatus().name());
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -119,7 +143,7 @@ public class GereatDao {
     //update a gereat in the table
     public void updateGereat(Gereat g) {
         try {
-            con.getJdbcTemplate().update("UPDATE Geraete SET Marke = ?, Modell = ?, Schaeden = ?, Baujahr = ? WHERE Seriennummer = ?", g.getMarke(), g.getModell(), g.getSchaeden(), g.getBaujahr(), g.getSeriennummer());
+            con.getJdbcTemplate().update("UPDATE Geraete SET Marke = ?, Modell = ?, Schaeden = ?, Baujahr = ?, Status = ? WHERE Seriennummer = ?", g.getMarke(), g.getModell(), g.getSchaeden(), g.getBaujahr(),g.getStatus().name() ,g.getSeriennummer());
         } catch (Exception e) {
             log.error(e.getMessage());
         }
