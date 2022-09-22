@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/BKW_Leihgabe_Frontend">
       <excludeFolder url="file://$MODULE_DIR$/BKW_Leihgabe_Frontend/dist" />
       <excludeFolder url="file://$MODULE_DIR$/BKW_Leihgabe_Frontend/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/BKW_Leihgabe_Frontend/Startseite/.angular/cache" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -11,4 +11,5 @@ public class Gereat {
     String modell;
     String schaeden;
     int baujahr;
+    GereateStatus status;
 }
