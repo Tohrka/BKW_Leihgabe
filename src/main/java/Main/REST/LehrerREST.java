@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class LehrerREST {
     private LehrerDao lDao = LehrerDao.getInstance();
 
+    // rest aufruf: http://localhost:8080/lehrer
     @GetMapping("/lehrer")
     public ArrayList<Lehrer> getAllLehrer() {
         return lDao.readAllLehrer();

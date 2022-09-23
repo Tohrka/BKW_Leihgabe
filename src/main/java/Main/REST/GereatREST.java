@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class GereatREST {
     private GereatDao gDao = GereatDao.getInstance();
 
+    // rest aufruf: http://localhost:8080/gereat
     @GetMapping("/gereat")
     public ArrayList<Gereat> getAllGereat() {
         return gDao.readAllGereate();

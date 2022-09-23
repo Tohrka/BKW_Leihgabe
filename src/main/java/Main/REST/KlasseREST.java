@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class KlasseREST {
     private KlasseDao kDao = KlasseDao.getInstance();
 
+    // rest aufruf: http://localhost:8080/klasse
     @GetMapping("/klasse")
     public ArrayList<Klasse> getAllKlasse() {
         return kDao.readAllKlasse();

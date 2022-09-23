@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class AusgabeREST {
     private AusgabeDao aDao = AusgabeDao.getInstance();
 
+    // rest aufruf: http://localhost:8080/ausgabe
     @GetMapping("/ausgabe")
     public ArrayList<Ausgabe> getAllAusgabe() {
         return aDao.readAllAusgabe();
