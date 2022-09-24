@@ -2,15 +2,18 @@ package Main.REST;
 import Main.DAO.SchuelerDao;
 import Main.Model.Schueler;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 @RestController
+@CrossOrigin
 public class SchuelerREST {
     private SchuelerDao sDao = SchuelerDao.getInstance();
 
     // rest aufruf: http://localhost:8080/schueler
     @GetMapping("/schueler")
-    public ArrayList<Schueler> getAllSchueler() {
+    public @ResponseBody ArrayList<Schueler> getAllSchueler() {
         return sDao.readAllSchueler();
     }
 

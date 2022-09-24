@@ -4,6 +4,7 @@ import Main.DAO.LoginDao;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class LoginREST {
     private LoginDao lDao = LoginDao.getInstance();
 

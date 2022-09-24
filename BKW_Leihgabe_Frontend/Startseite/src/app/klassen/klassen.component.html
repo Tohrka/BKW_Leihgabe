@@ -1,0 +1,30 @@
+<!-- logo int top left corner -->
+<img src="https://www.bkwitten.net/wp-content/uploads/2013/01/logo-bkwitten4.png">
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="/login">Home</a>
+  <a href="/gereate">Geräte</a>
+  <a class ="active" href="/klassen">Klassen</a>
+  <a href="/schueler">Schüler</a>
+</div>
+<div *ngIf="klassen != null">
+  <p><b>Klassen </b></p>
+  <div style="overflow-x: auto">
+    <table class="table table-striped" id="tabelle">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let klasse of klassen" class="tr:hover">
+        <td>{{klasse.klassen_id}}</td>
+        <td>{{klasse.klassenname}}</td>
+      <td><button class="btn btn-primary" (click)="show(klasse.klassen_id)">Ansehen</button></td>
+
+    </table>
+  </div>
+</div>

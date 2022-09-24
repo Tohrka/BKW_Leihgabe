@@ -1,0 +1,40 @@
+<!-- show Mainpage content -->
+<head>
+  <link href="schueler.component.css" rel="stylesheet" />
+</head>
+<!-- logo int top left corner -->
+<img src="https://www.bkwitten.net/wp-content/uploads/2013/01/logo-bkwitten4.png">
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="/login">Home</a>
+  <a href="/gereate">Geräte</a>
+  <a href="/klassen">Klassen</a>
+  <a class="active" href="/schueler">Schüler</a>
+</div>
+
+<div *ngIf="schueler.length> 0" style="margin-top: 25px">
+  <div style="overflow-x: auto">
+ <table class="table table-striped" id="tabelle">
+   <thead>
+   <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Vorname</th>
+      <th>Geburtsdatum</th>
+      <th>Email</th>
+      <th>Telefonnummer</th>
+     <th></th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let schueler of schueler" class="tr:hover">
+      <td>{{schueler.schueler_id}}</td>
+      <td>{{schueler.nachname}}</td>
+      <td>{{schueler.vorname}}</td>
+      <td>{{schueler.geburtsdatum}}</td>
+      <td>{{schueler.email}}</td>
+      <td>{{schueler.telefonnummer}}</td>
+      <td><button (click)="show(schueler.schueler_id)" id="myButton" class="float-left submit-button">Info</button></td>
+ </table>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
+@CrossOrigin
 public class LehrerREST {
     private LehrerDao lDao = LehrerDao.getInstance();
 

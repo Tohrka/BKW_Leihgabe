@@ -1,0 +1,38 @@
+<!-- logo int top left corner -->
+<img src="https://www.bkwitten.net/wp-content/uploads/2013/01/logo-bkwitten4.png">
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="/login">Home</a>
+  <a class="active" href="/gereate">Geräte</a>
+  <a href="/klassen">Klassen</a>
+  <a href="/schueler">Schüler</a>
+</div>
+
+<!-- main content -->
+<div style="margin-top: 25px; margin-left: 20px">
+  <h1>Geräte</h1>
+  <div *ngIf="gereat != null" style="">
+    <div style="overflow-x: auto">
+      <table class="table table-striped" id="tabelle">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Marke</th>
+          <th>Modell</th>
+          <th>Baujahr</th>
+          <th>Schäden</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let gereat of gereat" class="tr:hover">
+          <td>{{gereat.seriennummer}}</td>
+          <td>{{gereat.marke}}</td>
+          <td>{{gereat.modell}}</td>
+          <td>{{gereat.baujahr}}</td>
+          <td>{{gereat.schaeden}}</td>
+          <td>{{gereat.status}}</td>
+      </table>
+    </div>
+  </div>
+</div>

@@ -25,3 +25,26 @@
   background-color: #04AA6D;
   color: white;
 }
+
+table {
+  width:50%;
+  text-align: center;
+  border-collapse: collapse;
+  border: dimgray 1px solid;
+  font-size: 0.9em;
+  margin-right: 20px;
+  box-shadow: #333333 0px 0px 10px;
+
+
+}
+table thead tr{
+  background-color: #009879;
+  color: #ffffff;
+  text-align: center;}
+
+table tbody tr:nth-child(odd){
+  background-color: azure;
+}
+table tbody tr:nth-child(even){
+  background-color: lightgrey;
+}
