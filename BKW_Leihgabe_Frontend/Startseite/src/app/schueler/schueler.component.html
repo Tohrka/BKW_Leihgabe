@@ -1,4 +1,5 @@
 <!-- show Mainpage content -->
+<div class="main">
 <head>
   <link href="schueler.component.css" rel="stylesheet" />
 </head>
@@ -13,7 +14,8 @@
 </div>
 
 <div *ngIf="schueler.length> 0" style="margin-top: 25px">
-  <div style="overflow-x: auto">
+  <div style="overflow-x: auto; margin-top: 25px; margin-left: 20px">
+    <h1>Schüler</h1>
  <table class="table table-striped" id="tabelle">
    <thead>
    <tr>
@@ -37,4 +39,5 @@
       <td><button (click)="show(schueler.schueler_id)" id="myButton" class="float-left submit-button">Info</button></td>
  </table>
   </div>
+</div>
 </div>

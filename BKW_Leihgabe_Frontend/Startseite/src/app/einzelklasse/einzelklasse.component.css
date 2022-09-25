@@ -48,3 +48,6 @@ table tbody tr:nth-child(odd){
 table tbody tr:nth-child(even){
   background-color: lightgrey;
 }
+.main{
+  font-family: Arial, Helvetica, sans-serif;
+}

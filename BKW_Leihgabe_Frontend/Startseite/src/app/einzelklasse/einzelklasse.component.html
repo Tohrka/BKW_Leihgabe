@@ -1,3 +1,4 @@
+<div class="main">
 <!-- logo int top left corner -->
 <img src="https://www.bkwitten.net/wp-content/uploads/2013/01/logo-bkwitten4.png">
 <!-- navigation bar -->
@@ -7,10 +8,10 @@
   <a class="active" href="/klassen">Klassen</a>
   <a href="/schueler">Schüler</a>
 </div>
-<div *ngIf="klasse != null">
+<div *ngIf="klasse != null" style="margin-left: 20px; margin-top: 25px">
   <h1>Klasse {{klasse.klassenname}}</h1>
   <div *ngIf="schueler.length> 0" style="margin-top: 25px">
-    <div style="overflow-x: auto">
+    <div style="overflow-x: auto;">
       <table class="table table-striped" id="tabelle">
         <thead>
         <tr>
@@ -37,5 +38,6 @@
       </table>
     </div>
   </div>
+</div>
 </div>
 
