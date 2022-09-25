@@ -14,7 +14,7 @@ public class LoginDao {
 public boolean checkLogin(String username, String password) {
         //get the password from the database
         try{
-            String dbPassword = con.getJdbcTemplate().queryForObject("SELECT password FROM login WHERE username = ?", new Object[]{username}, String.class);
+            String dbPassword = con.getJdbcTemplate().queryForObject("SELECT passwort FROM login WHERE nutzername = ?", new Object[]{username}, String.class);
             //check if the password is correct
             if(dbPassword.equals(password)) {
                 return true;

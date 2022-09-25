@@ -9,7 +9,7 @@ public class LoginREST {
     private LoginDao lDao = LoginDao.getInstance();
 
     // rest aufruf: http://localhost:8080/login
-    @GetMapping("/CheckLogin/{username}/{password}")
+    @GetMapping("/Checklogin/{username}/{password}")
     public boolean checkLogin(@PathVariable String username, @PathVariable String password) {
         return lDao.checkLogin(username, password);
     }
